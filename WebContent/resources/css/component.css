@@ -1,0 +1,36 @@
+.input-text {
+	width:70%;
+	height:72px;
+	border:1px solid #E0E0E0;
+	display:block;
+	height:40px;
+	outline:medium;
+	margin:20px auto;
+	background-color:#FFF;
+	border-radius:2px;
+	padding:0px 10px;
+	font-weight:bold;
+}
+.input-btn {
+	width:70%;
+	height:36px;
+	display:block;
+	background-color:#01814A;
+	border-radius:4px;
+	margin:20px auto;
+	
+	text-align:center;
+	line-height:36px;
+	
+	border:1px solid red;
+}
+.input-btn:hover {
+	background-color:#019858;
+	cursor:pointer;
+}
+
+.input-btn:active {
+}
+.close:hover{
+	color:#66B3FF;
+}
