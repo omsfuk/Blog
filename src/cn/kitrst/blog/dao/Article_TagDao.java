@@ -17,8 +17,7 @@ public class Article_TagDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	
-	public void update(int articleid, int tagid) {
+	public void insert(String articleid, String tagid) {
 		jdbcTemplate.update("insert article_tag(articleid, tagid) values(?,?)", articleid, tagid);
 	}
 
@@ -29,31 +28,31 @@ public class Article_TagDao {
 			public Article_Tag mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Article_Tag at = new Article_Tag();
 				at.setId(rs.getInt("id"));
-				at.setArticleid(rs.getInt("articleid"));
-				at.setTagid(rs.getInt("commentid"));
+				at.setArticleid(rs.getString("articleid"));
+				at.setTagid(rs.getString("tagid"));
 				return at;
 			}
 			
 		}, id);
 	}
 	
-	public List<Integer> getTagIdByArticleId(int id) {
+	public List<String> getTagIdByArticleId(String articleid) {
 		
-		return jdbcTemplate.query("select tagid from article_tag where articleid=?", new Object[]{id}, new RowMapper<Integer>() {
+		return jdbcTemplate.query("select tagid from article_tag where articleid=?", new Object[]{articleid}, new RowMapper<String>() {
 			@Override
-			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return rs.getInt("tagid");
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString("tagid");
 			}
 			
 		});
 	}
 	
-	public List<Integer> getArticleIdByTagId(int id) {
+	public List<String> getArticleIdByTagId(String tagid) {
 		
-		return jdbcTemplate.query("select articleid from article_tag where tagid=?", new Object[]{id}, new RowMapper<Integer>() {
+		return jdbcTemplate.query("select articleid from article_tag where tagid=?", new Object[]{tagid}, new RowMapper<String>() {
 			@Override
-			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return rs.getInt("articleid");
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString("articleid");
 			}
 			
 		});
@@ -66,8 +65,8 @@ public class Article_TagDao {
 			public Article_Tag mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Article_Tag at = new Article_Tag();
 				at.setId(rs.getInt("id"));
-				at.setArticleid(rs.getInt("articleid"));
-				at.setTagid(rs.getInt("commentid"));
+				at.setArticleid(rs.getString("articleid"));
+				at.setTagid(rs.getString("tagid"));
 				return at;
 			}
 		}, id);

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -27,17 +28,24 @@
 			</div>
 			<div class="tags">
 				<c:forEach var="tag" items="${tags}">
-					<a href="tag?tagid=${tag.uuid}" class="tag"  data-color="${tag.color}"><span class="tag-text">${tag.name}</span></a>	
+					<a href="tag?tagid=${tag.uuid}" class="tag" data-color="${tag.color}"><span class="tag-text">${tag.name}</span></a>
 				</c:forEach>
 			</div>
 		</div>
 		
-		<div class="about">
-			<div class="title">About Me</div>
-			<div class="text">后端程序猿一枚</div>
-			<div class="text">热衷于前端UI</div>
-			<div class="text">所学驳杂</div>
-			<div class="text">撰此博客，抒情感怀</div>
+		<div class="timeline-main">
+			<div class="timeline">
+				<c:forEach var="article" items="${articles}">
+					<div class="a-piece">
+						<div class="date">${article.date}</div>
+						<span class="fa-stack fa-2x">
+						  <i class="fa fa-circle fa-stack-2x" style="color:#D2E9FF"></i>
+						  <i class="fa fa-check fa-stack-1x" style="color:#7D7DFF"></i>
+						</span>
+						<a href="article?articleid=${article.uuid}"><div class="title">${article.title}</div></a>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
 	</body>
 <script src="resources/js/jquery.min.js"></script>

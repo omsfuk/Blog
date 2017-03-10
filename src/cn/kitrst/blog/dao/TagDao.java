@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -22,32 +23,51 @@ public class TagDao {
 			@Override
 			public Tag mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Tag tag = new Tag();
-				tag.setTagid(rs.getInt("tagid"));
+				tag.setUuid(rs.getString("uuid"));
 				tag.setName(rs.getString("name"));
+				tag.setColor(rs.getInt("color"));
 				return tag;
 			}
 		});
 	}
 	
-	public Tag getTagById(int id) {
-		return jdbcTemplate.queryForObject("select * from tags where tagid=?", new RowMapper<Tag>() {
+	public Tag getTagByUuid(String uuid) {
+		return jdbcTemplate.queryForObject("select * from tags where uuid=?", new RowMapper<Tag>() {
 			@Override
 			public Tag mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Tag tag = new Tag();
-				tag.setTagid(rs.getInt("tagid"));
+				tag.setUuid(rs.getString("uuid"));
 				tag.setName(rs.getString("name"));
+				tag.setColor(rs.getInt("color"));
 				return tag;
 			}
-		}, id);
+		}, uuid);
 
 	}
 	
-	public int getTagIdByName(String tagname) {
-		return jdbcTemplate.queryForObject("select * from tags where name=?", new RowMapper<Integer>() {
-			@Override
-			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return rs.getInt("tagid");
-			}
-		}, tagname);
+	public Tag getTagIdByName(String tagname) {
+		Tag tag = null;
+		try {
+			tag = jdbcTemplate.queryForObject("select * from tags where name=?", new RowMapper<Tag>() {
+				@Override
+				public Tag mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Tag tag = new Tag();
+					tag.setUuid(rs.getString("uuid"));
+					tag.setName(rs.getString("name"));
+					tag.setColor(rs.getInt("color"));
+					return tag;
+				}
+			}, tagname);
+		} catch (EmptyResultDataAccessException e) {
+		}
+		return tag;
+	}
+	
+	public void addTag(String tagName) {
+		jdbcTemplate.update("insert tags(uuid, name, color) values(uuid(),?,?)", tagName, Math.round(Math.random() * 5));
+	}
+	
+	public void delTag(String tagName) {
+		jdbcTemplate.update("delete from tags where name=?", tagName);
 	}
 }

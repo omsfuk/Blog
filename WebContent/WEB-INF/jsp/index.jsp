@@ -2,51 +2,65 @@
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="resources/css/font-awesome.min.css" rel="stylesheet"/>
-<link href="resources/css/admin.css" rel="stylesheet"/>
-<title>Insert title here</title>
-</head>
-<body>
-<div class="sidebar">
-	<a href="index"><div class="fa fa-home fa-3x"></div></a>
-	<a href="write"><div class="fa fa-file-text fa-2x"></div></a>
-	<a href="manage"><div class="fa fa-list fa-2x"></div></a>
-	<a href="comment"><div class="fa fa-comments fa-2x"></div></a>
-	<a href="tags"><div class="fa fa-tags fa-2x"></div></a>
-</div>
-
-<div class="welcome">
-	<span class="fa fa-smile-o"></span>
-	<div>Welcome back</div>
-</div>
-<div class="information">
-	<div class="info-item">
-		<span class="fa fa-file-text fa-4x"></span>
-		<div class="text">发表了</div>
-		<div class="text-number">9</div>
-		<div class="text">篇文章</div>
-	</div>
-	<div class="info-item">
-		<span class="fa fa-comments fa-4x"></span>
-		<div class="text">收到了</div>
-		<div class="text-number">9</div>
-		<div class="text">条留言</div>
-	</div>
-	<div class="info-item">
-		<span class="fa fa-cloud-upload fa-4x"></span>
-		<div class="text">上传了</div>
-		<div class="text-number">9</div>
-		<div class="text">个附件</div>
-	</div>
-	<div class="info-item">
-		<span class="fa fa-link fa-4x"></span>
-		<div class="text">友链了</div>
-		<div class="text-number">9</div>
-		<div class="text">个好友</div>
-	</div>
-</div>
-</body>
-
+	<head>
+		<meta charset="UTF-8">
+		<title>Welcome</title>
+		<link rel="stylesheet" href="/Blog/resources/css/index.css" />
+		<link rel="stylesheet" href="/Blog/resources/css/font-awesome.min.css" />
+	</head>
+	<body>
+		<div class="navbar">
+			<a href="index">
+				<div class="btn-nav">
+					<span class="fa fa-paper-plane-o fa-2x"></span>
+					<span class="text">Home</span>
+				</div>
+			</a>
+			<a href="new">
+				<div class="btn-nav">
+					<span class="fa fa-file-o fa-2x"></span>
+					<span class="text">New</span>
+				</div>
+			</a>
+			<a href="draft">
+				<div class="btn-nav">
+					<span class="fa fa-legal fa-2x"></span>
+					<span class="text">Draft</span>
+				</div>
+			</a>
+			<a href="done">
+				<div class="btn-nav">
+					<span class="fa fa-edit fa-2x"></span>
+					<span class="text">Done</span>
+				</div>
+			</a>
+			<a href="tags">
+				<div class="btn-nav">
+					<span class="fa fa-tags fa-2x"></span>
+					<span class="text">Tags</span>
+				</div>
+			</a>
+			<a href="signOut">
+				<div class="btn-nav">
+					<span class="fa fa-sign-in fa-2x"></span>
+					<span class="text">SignOut</span>
+				</div>
+			</a>
+		</div>		
+		
+		<div class="main">
+			<div class="title">
+				Welcome, Kitrst
+			</div>
+			<div class="title">
+				You Have Written
+			</div>
+			<div class="emphisis">
+				128
+			</div>
+			<div class="title">
+				Blogs
+			</div>
+		</div>
+	</body>
 </html>

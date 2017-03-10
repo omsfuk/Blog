@@ -6,9 +6,7 @@ import java.util.List;
 
 public class Article {
 
-	private int articleid;
-	
-	private int userid;
+	private String uuid;
 	
 	private String title;
 	
@@ -16,45 +14,14 @@ public class Article {
 	
 	private Date date;
 	
-	private List<Tag> tags;
+	private List<Tag> tags = new LinkedList<Tag>();
 	
-	private int commentCount;
-	
-	public int getCommentCount() {
-		return commentCount;
+	public String getUuid() {
+		return uuid;
 	}
 
-	public void setCommentCount(int commentCount) {
-		this.commentCount = commentCount;
-	}
-
-	public Article() {
-		tags = new LinkedList<Tag>();
-	}
-	
-	public List<Tag> getTags() {
-		return tags;
-	}
-
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
-	}
-
-	public int getUserid() {
-		return userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
-
-
-	public int getArticleid() {
-		return articleid;
-	}
-
-	public void setArticleid(int articleid) {
-		this.articleid = articleid;
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 	public String getTitle() {
@@ -80,5 +47,14 @@ public class Article {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+	
 	
 }

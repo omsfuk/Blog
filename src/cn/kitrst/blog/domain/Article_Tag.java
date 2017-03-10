@@ -4,9 +4,9 @@ public class Article_Tag {
 	
 	private int id;
 	
-	private int articleid;
+	private String articleid;
 	
-	private int tagid;
+	private String tagid;
 
 	public int getId() {
 		return id;
@@ -16,20 +16,22 @@ public class Article_Tag {
 		this.id = id;
 	}
 
-	public int getArticleid() {
+	public String getArticleid() {
 		return articleid;
 	}
 
-	public void setArticleid(int articleid) {
+	public void setArticleid(String articleid) {
 		this.articleid = articleid;
 	}
 
-	public int getTagid() {
+	public String getTagid() {
 		return tagid;
 	}
 
-	public void setTagid(int tagid) {
+	public void setTagid(String tagid) {
 		this.tagid = tagid;
 	}
+	
+	
 	
 }

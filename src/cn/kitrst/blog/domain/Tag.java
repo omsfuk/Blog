@@ -1,17 +1,27 @@
 package cn.kitrst.blog.domain;
 
 public class Tag {
-
-	private int tagid;
+	
+	private String uuid;
 	
 	private String name;
 
-	public int getTagid() {
-		return tagid;
+	private int color;
+	
+	public int getColor() {
+		return color;
 	}
 
-	public void setTagid(int id) {
-		this.tagid = id;
+	public void setColor(int color) {
+		this.color = color;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 	public String getName() {
@@ -21,5 +31,7 @@ public class Tag {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
 	
 }
