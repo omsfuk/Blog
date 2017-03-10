@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.kitrst.blog.dao.ArticleDao;
@@ -38,30 +39,10 @@ public class HomeController {
 	@Resource
 	private CommentDao commentDao;
 	
-	@RequestMapping("/home")
-	public String home(Model model) {
-		List<Tag> allTags = tagDao.getTags();;
-		List<Article> articles = articleDao.getArticles();
-		
-		for(int i = 0; i < articles.size(); i++) {
-			Article article = articles.get(i);
-			String cont = article.getCont();
-			article.setCont(cont.substring(0, 300 < cont.length() ? 300 : cont.length()).replace("<", "&lt;"));
-			
-			List<Tag> tags = article.getTags();
-			List<String> tagids = articleTagDao.getTagIdByArticleId(article.getUuid());
-			for(String tagid : tagids) {
-				tags.add(tagDao.getTagByUuid(tagid));
-			}
-		}
-		
-		model.addAttribute("articles", articles);
-		model.addAttribute("tags", allTags);
-		return "home";
-	}
 	
-	@RequestMapping("/tag")
-	public String listByTag(String tagid, Model model) {
+	
+	@RequestMapping("/tag/{tagid}")
+	public String listByTag(@PathVariable String tagid, Model model) {
 		
 		List<String> articleIds = articleTagDao.getArticleIdByTagId(tagid);
 		List<Article> articles = new LinkedList<Article>();
@@ -85,8 +66,8 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/article")
-	public String article(String articleid, Model model) {
+	@RequestMapping("/article/{articleid}")
+	public String article(@PathVariable String articleid, Model model) {
 		List<Tag> allTags = tagDao.getTags();
 		Article article = articleDao.getArticleByUuid(articleid);
 		List<Tag> tags = article.getTags();
@@ -123,5 +104,27 @@ public class HomeController {
 		model.addAttribute("articles", articles);
 		model.addAttribute("tags", tags);
 		return "timeline";
+	}
+	
+	@RequestMapping(value={"/home","/"})
+	public String home(Model model) {
+		List<Tag> allTags = tagDao.getTags();;
+		List<Article> articles = articleDao.getArticles();
+		
+		for(int i = 0; i < articles.size(); i++) {
+			Article article = articles.get(i);
+			String cont = article.getCont();
+			article.setCont(cont.substring(0, 300 < cont.length() ? 300 : cont.length()).replace("<", "&lt;"));
+			
+			List<Tag> tags = article.getTags();
+			List<String> tagids = articleTagDao.getTagIdByArticleId(article.getUuid());
+			for(String tagid : tagids) {
+				tags.add(tagDao.getTagByUuid(tagid));
+			}
+		}
+		
+		model.addAttribute("articles", articles);
+		model.addAttribute("tags", allTags);
+		return "home";
 	}
 }

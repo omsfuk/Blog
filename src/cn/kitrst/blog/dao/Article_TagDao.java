@@ -36,6 +36,7 @@ public class Article_TagDao {
 		}, id);
 	}
 	
+	
 	public List<String> getTagIdByArticleId(String articleid) {
 		
 		return jdbcTemplate.query("select tagid from article_tag where articleid=?", new Object[]{articleid}, new RowMapper<String>() {
@@ -72,4 +73,11 @@ public class Article_TagDao {
 		}, id);
 	}
 	
+	public void delMappingByArticleId(String articleid) {
+		jdbcTemplate.update("delete from article_tag where articleid=?", articleid);
+	}
+	
+	public void delMappingByTagId(String tagid) {
+		jdbcTemplate.update("delete from article_tag where articleid=?", tagid);
+	}
 }

@@ -5,9 +5,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>New</title>
-		<link rel="stylesheet" href="/Blog/resources/css/tags.css" />
-		<link rel="stylesheet" href="/Blog/resources/css/font-awesome.min.css" />
+		<title>Tags</title>
+		<link rel="stylesheet" href="/Blog/resources/admin/css/navbar.css" />
+		<link rel="stylesheet" href="/Blog/resources/admin/css/tags.css" />
+		<link rel="stylesheet" href="/Blog/resources/common/css/font-awesome.min.css" />
 	</head>
 	<body>
 		<div class="navbar">
@@ -23,16 +24,10 @@
 					<span class="text">New</span>
 				</div>
 			</a>
-			<a href="draft">
-				<div class="btn-nav">
-					<span class="fa fa-legal fa-2x"></span>
-					<span class="text">Draft</span>
-				</div>
-			</a>
-			<a href="done">
+			<a href="manage">
 				<div class="btn-nav">
 					<span class="fa fa-edit fa-2x"></span>
-					<span class="text">Done</span>
+					<span class="text">Manage</span>
 				</div>
 			</a>
 			<a href="tags">
@@ -41,41 +36,41 @@
 					<span class="text">Tags</span>
 				</div>
 			</a>
-			<a href="signOut">
+			<a href="logout">
 				<div class="btn-nav">
 					<span class="fa fa-sign-in fa-2x"></span>
-					<span class="text">SignOut</span>
+					<span class="text">LogOut</span>
 				</div>
 			</a>
 		</div>		
 		
 		<div class="main">
+			<form id="delTag" style="display: none;">
+				<input name="delTagName" type="text"/>
+			</form>
 			<div class="queryDialog">
 				<div class="text">确认删除</div>
 				<div class="text delTagName"></div>
 				<div class="text">标签</div>
 				<div class="ok">Yes</div>
 				<div class="cancel">No</div>
-				<form id="delTag">
-					<input name="delTagName" type="text"/>
-				</form>
 			</div>
 			<div class="addTagDialog">
-				<form id="addTag">
-					<input name="addTagName" type="text" />
+				<form id="addTag" method="post">
+					<input name="addTagName" type="text" placeholder="Please Input TagName"/>
 				</form>
 				<div class="ok">Ok</div>
 				<div class="cancel">Cancel</div>
 			</div>
 			<div class="tags">
 				<c:forEach var="tag" items="${tags}">
-					<div title="${tag.name}" class="tag">${tag.name}</div>
+					<div title="Java" class="tag">${tag.name}</div>
 				</c:forEach>
 				<div class="btn-addTag"><span class="fa fa-plus-square fa-3x"></span></div>
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="/Blog/resources/js/jquery.min.js" ></script>
+	<script type="text/javascript" src="/Blog/resources/common/js/jquery.min.js" ></script>
 	<script>
 		$(document).ready(function() {
 			$(".tag").click(function() {
@@ -95,12 +90,12 @@
 			});
 			$(".btn-addTag").click(function() {
 				$(".addTagDialog").fadeIn("0.5");
+				$("input").focus();
 			})
 			$(".addTagDialog .ok").click(function() {
-				var tagName = $("input[name='addTagName']").val();
+				var tagName = $("input[name='addTag']").val();
 				var isExist = false;
 				$(".tag").each(function() {
-					
 					if($(this).text().indexOf(tagName) != -1) {
 						
 						isExist = true;

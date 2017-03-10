@@ -6,29 +6,29 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Home</title>
-		<link href="resources/css/_home.css" rel="stylesheet" />
-		<link href="resources/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="/Blog/resources/home/css/home.css" rel="stylesheet" />
+		<link href="/Blog/resources/common/css/font-awesome.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div class="navbar">
 			<div class="black-bg">				
 			</div>
-			<img class="portrait" src="resources/images/portrait.png" />
-			<img class="signature" src="resources/images/signature.png" />
+			<img class="portrait" src="/Blog/resources/home/images/portrait.png" />
+			<img class="signature" src="/Blog/resources/home/images/signature.png" />
 			<div class="btns">
 				<div class="btn-nav">
-					<a class="fa fa-paw" href="home"></a>主页
+					<a class="fa fa-paw" href="/Blog/home"></a>主页
 				</div>
 				<div class="btn-nav">
-					<a class="fa fa-paper-plane" href="timeline"></a>归档
+					<a class="fa fa-paper-plane" href="/Blog/timeline"></a>归档
 				</div>
 				<div class="btn-nav">
-					<a class="fa fa-user-circle" href="about"></a>关于
+					<a class="fa fa-user-circle" href="/Blog/about"></a>关于
 				</div>
 			</div>
 			<div class="tags">
 				<c:forEach var="tag" items="${tags}">
-					<a href="tag?tagid=${tag.uuid}" class="tag" data-color="${tag.color}"><span class="tag-text">${tag.name}</span></a>
+					<a href="/Blog/tag/${tag.uuid}" class="tag" data-color="${tag.color}"><span class="tag-text">${tag.name}</span></a>
 				</c:forEach>
 			</div>
 		</div>
@@ -42,12 +42,12 @@
 						  <i class="fa fa-circle fa-stack-2x" style="color:#D2E9FF"></i>
 						  <i class="fa fa-check fa-stack-1x" style="color:#7D7DFF"></i>
 						</span>
-						<a href="article?articleid=${article.uuid}"><div class="title">${article.title}</div></a>
+						<a href="/Blog/article/${article.uuid}"><div class="title">${article.title}</div></a>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
 	</body>
-<script src="resources/js/jquery.min.js"></script>
-<script src="resources/js/_home.js"></script>
+<script src="/Blog/resources/common/js/jquery.min.js"></script>
+<script src="/Blog/resources/home/js/home.js"></script>
 </html>

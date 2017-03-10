@@ -46,9 +46,10 @@
 		</div>		
 		
 		<div class="main">
-			<form id="form" method="post">
-				<input name="title" class="title" type="text"/>
-				<textarea name="cont" id="content" spellcheck="false" rows="20"></textarea>
+			<form id="form" method="post" action="/Blog/admin/update">
+				<input name="uuid" type="hidden" value="${article.uuid}" />
+				<input name="title" class="title" type="text" value="${article.title}"/>
+				<textarea name="cont" id="content" spellcheck="false" rows="20">${article.cont}</textarea>
 			
 				<div class="markdown-body">
 					

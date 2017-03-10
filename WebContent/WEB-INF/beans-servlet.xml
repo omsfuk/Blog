@@ -34,8 +34,11 @@
 	
 	<mvc:interceptors>  
         <mvc:interceptor>  
-            <mvc:mapping path="/index"/>
-            <mvc:mapping path="/tags"/>       
+            <mvc:mapping path="/admin/index"/>
+            <mvc:mapping path="/admin/tags"/>
+            <mvc:mapping path="/admin/delete"/>
+            <mvc:mapping path="/admin/update"/>
+            <mvc:mapping path="/admin/new"/>       
             <bean class="cn.kitrst.blog.filter.ValidateFilter"/>  
         </mvc:interceptor>  
     </mvc:interceptors>  

@@ -5,8 +5,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Welcome</title>
-		<link rel="stylesheet" href="/Blog/resources/css/index.css" />
-		<link rel="stylesheet" href="/Blog/resources/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="/Blog/resources/admin/css/navbar.css" />
+		<link rel="stylesheet" href="/Blog/resources/admin/css/index.css" />
+		<link rel="stylesheet" href="/Blog/resources/common/css/font-awesome.min.css" />
 	</head>
 	<body>
 		<div class="navbar">
@@ -22,16 +23,10 @@
 					<span class="text">New</span>
 				</div>
 			</a>
-			<a href="draft">
-				<div class="btn-nav">
-					<span class="fa fa-legal fa-2x"></span>
-					<span class="text">Draft</span>
-				</div>
-			</a>
-			<a href="done">
+			<a href="manage">
 				<div class="btn-nav">
 					<span class="fa fa-edit fa-2x"></span>
-					<span class="text">Done</span>
+					<span class="text">Manage</span>
 				</div>
 			</a>
 			<a href="tags">
@@ -40,10 +35,10 @@
 					<span class="text">Tags</span>
 				</div>
 			</a>
-			<a href="signOut">
+			<a href="logout">
 				<div class="btn-nav">
 					<span class="fa fa-sign-in fa-2x"></span>
-					<span class="text">SignOut</span>
+					<span class="text">LogOut</span>
 				</div>
 			</a>
 		</div>		
@@ -56,7 +51,7 @@
 				You Have Written
 			</div>
 			<div class="emphisis">
-				128
+				${articleCount}
 			</div>
 			<div class="title">
 				Blogs

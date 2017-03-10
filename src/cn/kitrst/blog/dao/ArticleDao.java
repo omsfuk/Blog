@@ -23,7 +23,7 @@ public class ArticleDao {
 	}
 	
 	public List<Article> getArticles() {
-		return jdbcTemplate.query("select * from articles", new RowMapper<Article>() {
+		return jdbcTemplate.query("select * from articles order by date desc", new RowMapper<Article>() {
 			@Override
 			public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Article article = new Article();
@@ -50,5 +50,24 @@ public class ArticleDao {
 			}
 			
 		}, uuid);
+	}
+	
+	public int getArticleCount() {
+		return jdbcTemplate.queryForObject("select count(*) from articles", new RowMapper<Integer>() {
+
+			@Override
+			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getInt("count(*)");
+			}
+			
+		});
+	}
+	
+	public void deleteArticleByUuid(String articleid) {
+		jdbcTemplate.update("delete from articles where uuid=?", articleid);
+	}
+	
+	public void updateArticle(String uuid, String title, String cont) {
+		jdbcTemplate.update("update articles set articles.title=?,articles.cont=? where articles.uuid=?", title, cont, uuid);
 	}
 }

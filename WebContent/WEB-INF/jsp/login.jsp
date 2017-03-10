@@ -5,13 +5,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Kitrst's Blog</title>
-		<link rel="stylesheet" href="resources/css/login.css" />
-		<link rel="stylesheet" href="resources/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="/Blog/resources/admin/css/login.css" />
+		<link rel="stylesheet" href="/Blog/resources/common/css/font-awesome.min.css" />
 	</head>
 	<body>
 		<div class="login">
 			<div class="text">
-				<img src="resources/images/login.png" />
+				<img src="resources/admin/images/login.png" />
 			</div>
 			<div class="container">
 				<form id="form" method="post">
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="resources/js/jquery.min.js" ></script>
+	<script type="text/javascript" src="/Blog/resources/common/js/jquery.min.js" ></script>
 	<script>
 		$(".btn-login").click(function() {
 			$("#form").submit();

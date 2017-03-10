@@ -1,0 +1,76 @@
+.main {	
+	margin:32px 32px 32px 250px;
+	height:90%;
+	padding:16px 32px;
+	background-color:#FFFFFF;
+	box-shadow: 0px 0px 20px #555555;
+}
+
+.main .title {
+	width:98%;
+	padding:10px;
+	margin-bottom: 8px;
+	font-size: 30px;
+	background-color:#FFFFFF;
+	box-shadow:0px 0px 5px #171717 inset;
+}
+
+.main textarea {
+	max-width:96%;
+	min-width: 96%;
+	padding:2%;
+	outline: none;
+	font-size:20px;
+	border:none;
+	background-color:#FFFFFF;
+	box-shadow:0px 0px 5px #171717 inset;
+}
+
+.main .btn {
+	display: inline-block;
+	margin:16px 8px 0px 0px;
+	width:100px;
+	text-align: center;
+	padding:5px 10px;
+	background-color:#E0E0E0;
+	box-shadow:0px 0px 5px #777777;
+	border-radius: 16px;
+}
+.main .btn:hover {
+	cursor:pointer;
+	background-color:#8E8E8E;
+	transition: background-color 0.3s linear;
+}
+
+/*标签*/
+
+.tags .tag {
+	display: inline-block;
+	margin-top:8px;
+	padding:5px 10px;
+	background-color:#E0E0E0;
+	box-shadow:0px 0px 2px #BEBEBE;
+}
+
+.tags .tag:hover {
+	cursor:pointer;
+}
+
+/*选中的标签*/
+.tags .tag-checked {
+	display: inline-block;
+	margin-top:8px;
+	padding:5px 10px;
+	background-color:#E0E0E0;
+	box-shadow:0px 10px 10px #BEBEBE inset;
+}
+
+.tags .tag-checked:hover {
+	cursor: pointer;
+}
+/*预览相关*/
+.markdown-body {
+	display: none;
+	min-height: 100px;
+	padding-bottom: 64px;
+}

@@ -3,10 +3,13 @@ package cn.kitrst.blog.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.kitrst.blog.dao.ArticleDao;
@@ -15,6 +18,7 @@ import cn.kitrst.blog.dao.CommentDao;
 import cn.kitrst.blog.dao.DBUtil;
 import cn.kitrst.blog.dao.TagDao;
 import cn.kitrst.blog.dao.UserDao;
+import cn.kitrst.blog.domain.Article;
 import cn.kitrst.blog.domain.Tag;
 
 @Controller
@@ -43,9 +47,9 @@ public class AdminController {
 		if(username == null || password == null) {
 			return "login";
 		}
-		
 		if("admin".equals(password) && "kitrst".equals(username)) {			
 			session.setAttribute("login", "kitrst");
+			System.out.println(username + password);
 			return "redirect:admin/index";
 		} else {
 			return "redirect:admin";
@@ -53,30 +57,45 @@ public class AdminController {
 	}
 	
 	@RequestMapping("admin/index")
-	public String index() {
+	public String index(Model model) {
+		int articleCount = articleDao.getArticleCount();
+		model.addAttribute("articleCount", articleCount);
 		return "index";
+	}
+	
+	@RequestMapping("admin/new/{articleid}")
+	public String write(@PathVariable String articleid, Model model) {
+		Article article = articleDao.getArticleByUuid(articleid);
+		model.addAttribute("article", article);
+		return "edit";
 	}
 	
 	@RequestMapping("admin/new")
 	public String write(String title, String cont, String[] tagList, Model model) {
 				
 		if(title != null && cont != null) {
-			String articleid = dbUtil.getUuid();
-			articleDao.insert(articleid, title, cont);
+			String articleid0 = dbUtil.getUuid();
+			articleDao.insert(articleid0, title, cont);
 			
 			if(tagList != null) {
 				for(String tagName : tagList) {
 					Tag tag = tagDao.getTagIdByName(tagName);
-					articleTagDao.insert(articleid, tag.getUuid());
+					articleTagDao.insert(articleid0, tag.getUuid());
 				}
 			}
-			return "redirect:new";
+			return "redirect:manage";
 		}
 		
 		List<Tag> tags = tagDao.getTags();
 		model.addAttribute("tags", tags);
 		
 		return "new";
+	}
+	
+	@RequestMapping("admin/update")
+	public String update(String uuid, String title, String cont) {
+		articleDao.updateArticle(uuid, title, cont);
+		return "redirect:manage";
 	}
 	
 	@RequestMapping("admin/tags")
@@ -101,9 +120,23 @@ public class AdminController {
 		return "tags";
 	}
 	
-	@RequestMapping("admin/done")
-	public String done() {
-		return "done";
+	@RequestMapping("admin/manage")
+	public String done(Model model) {
+		List<Article> articles = articleDao.getArticles();
+		model.addAttribute("articles", articles);
+		return "manage";
+	}
+	
+	@RequestMapping("admin/delete")
+	public void delete(String articleid, HttpServletResponse resp) {
+		articleTagDao.delMappingByArticleId(articleid);
+		articleDao.deleteArticleByUuid(articleid);
+	}
+	
+	@RequestMapping("admin/logout")
+	public String logout(HttpServletRequest req) {
+		req.getSession().removeAttribute("login");
+		return "redirect:/login";
 	}
 	
 }

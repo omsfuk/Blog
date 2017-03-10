@@ -1,0 +1,35 @@
+.main {	
+	margin:32px 250px 32px 250px;
+	height:90%;
+	padding:32px 32px;
+	background-color:#F0F0F0;
+}
+
+.main .btn {
+	display: inline-block;
+	margin:16px 8px 0px 0px;
+	width:100px;
+	text-align: center;
+	padding:5px 5px;
+	background-color:#E0E0E0;
+	box-shadow:0px 0px 5px #777777;
+	border-radius: 16px;
+}
+.main .btn:hover {
+	cursor:pointer;
+	background-color:#8E8E8E;
+	transition: background-color 0.3s linear;
+}
+
+.main table {
+	border-collapse: collapse;
+	table-layout: auto;
+	margin:0px auto;
+}
+
+table th, table td {
+	padding:5px;
+}
+td:nth-child(2) {
+	white-space: nowrap;
+}

@@ -3,7 +3,7 @@
 	maring:0px;
 }
 body {
-	background: #282828;
+	background: #E0E0E0;
 }
 a {
 	color:black;
@@ -38,24 +38,4 @@ a:hover {
 	font-size:25px;
 	text-align: center;
 	padding-left:25px;
-}
-
-.main {
-	margin:32px 32px 32px 250px;
-	padding:64px;
-	background-color:#373737;
-}
-.main .title {
-	font-size:55px;
-	text-align:center;
-}
-
-.main .title .fa {
-	font-size:20px;
-}
-
-.main .emphisis {
-	font-size:64px;
-	text-align:center;
-	font-weight:bold;
 }

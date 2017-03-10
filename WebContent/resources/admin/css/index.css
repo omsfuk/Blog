@@ -1,0 +1,19 @@
+.main {
+	margin:32px 32px 32px 250px;
+	padding:64px;
+	background-color:#FCFCFC;
+}
+.main .title {
+	font-size:55px;
+	text-align:center;
+}
+
+.main .title .fa {
+	font-size:20px;
+}
+
+.main .emphisis {
+	font-size:64px;
+	text-align:center;
+	font-weight:bold;
+}

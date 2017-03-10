@@ -24,10 +24,11 @@ public class ValidateFilter implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object arg2) throws Exception {
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("user");
-		if(user != null && user.getUsername() != null) {
+		String user = (String)session.getAttribute("login");
+		if(user != null && user != "") {
 			return true;
 		}
+		resp.sendRedirect("/Blog/login");
 		return false;
 	}
 
