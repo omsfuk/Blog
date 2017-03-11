@@ -6,37 +6,37 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Tags</title>
-		<link rel="stylesheet" href="/Blog/resources/admin/css/navbar.css" />
-		<link rel="stylesheet" href="/Blog/resources/admin/css/tags.css" />
-		<link rel="stylesheet" href="/Blog/resources/common/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="<%=application.getInitParameter("rootURL") %>/resources/admin/css/navbar.css" />
+		<link rel="stylesheet" href="<%=application.getInitParameter("rootURL") %>/resources/admin/css/tags.css" />
+		<link rel="stylesheet" href="<%=application.getInitParameter("rootURL") %>/resources/common/css/font-awesome.min.css" />
 	</head>
 	<body>
 		<div class="navbar">
-			<a href="index">
+			<a href="<%=application.getInitParameter("rootURL") %>/admin/index">
 				<div class="btn-nav">
 					<span class="fa fa-paper-plane-o fa-2x"></span>
 					<span class="text">Home</span>
 				</div>
 			</a>
-			<a href="new">
+			<a href="<%=application.getInitParameter("rootURL") %>/admin/new">
 				<div class="btn-nav">
 					<span class="fa fa-file-o fa-2x"></span>
 					<span class="text">New</span>
 				</div>
 			</a>
-			<a href="manage">
+			<a href="<%=application.getInitParameter("rootURL") %>/admin/manage">
 				<div class="btn-nav">
 					<span class="fa fa-edit fa-2x"></span>
 					<span class="text">Manage</span>
 				</div>
 			</a>
-			<a href="tags">
+			<a href="<%=application.getInitParameter("rootURL") %>/admin/tags">
 				<div class="btn-nav">
 					<span class="fa fa-tags fa-2x"></span>
 					<span class="text">Tags</span>
 				</div>
 			</a>
-			<a href="logout">
+			<a href="<%=application.getInitParameter("rootURL") %>/admin/logout">
 				<div class="btn-nav">
 					<span class="fa fa-sign-in fa-2x"></span>
 					<span class="text">LogOut</span>
@@ -70,7 +70,7 @@
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="/Blog/resources/common/js/jquery.min.js" ></script>
+	<script type="text/javascript" src="<%=application.getInitParameter("rootURL") %>/resources/common/js/jquery.min.js" ></script>
 	<script>
 		$(document).ready(function() {
 			$(".tag").click(function() {

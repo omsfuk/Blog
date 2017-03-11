@@ -49,10 +49,9 @@ public class AdminController {
 		}
 		if("admin".equals(password) && "kitrst".equals(username)) {			
 			session.setAttribute("login", "kitrst");
-			System.out.println(username + password);
 			return "redirect:admin/index";
 		} else {
-			return "redirect:admin";
+			return "redirect:login";
 		}
 	}
 	

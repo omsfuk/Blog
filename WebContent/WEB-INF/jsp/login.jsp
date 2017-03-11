@@ -16,7 +16,7 @@
 			<div class="container">
 				<form id="form" method="post">
 					<input name="username" type="text" placeholder="Username"/>
-					<input name="password" type="password" placeholder="Password"/>
+					<input type="text" name="password" onfocus="this.type='password'" autocomplete="off" placeholder="Password"/>
 				</form>
 				<a class="btn-login" href="javascript:void(0)">
 					<span class="fa-stack fa-lg">
